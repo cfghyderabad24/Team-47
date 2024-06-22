@@ -10,7 +10,7 @@ const chatbotRouter=require("./routes/chatbotRouter")
 const path=require("path")
 const upload=require("./middleware/multermiddleware")
 require("dotenv").config()
-
+const cartRouter=require("./routes/cartRouter")
 
 
 app.use(cors())
@@ -22,6 +22,7 @@ app.post("/api/upload",upload.single('file'),async(req,res)=>{
     res.json({message:"file uploaded successfully"})
 })
 app.use("/api/chatbot/",chatbotRouter)
+app.use("/api/cart/",cartRouter)
 connectDB().then(()=>{
     app.listen(5000,()=>{console.log(`server is running at port ${process.env.port}`)})
 })

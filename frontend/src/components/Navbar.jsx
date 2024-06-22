@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
-
+import {useLogin} from '../context/LoginContext'
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
+  const {login,setLogin}= useLogin()
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollActive(window.scrollY > 20);
     });
   }, []);
+  console.log(login,"login")
   return (
     <>
       <header
@@ -83,9 +85,9 @@ const Header = () => {
               Contact Us
             </LinkScroll>
 
-            <LinkScroll
+            {/* <LinkScroll
               activeClass="active"
-              to="testimoni"
+              to="/testimoni"
               spy={true}
               smooth={true}
               duration={1000}
@@ -100,7 +102,8 @@ const Header = () => {
               }
             >
               Product
-            </LinkScroll>
+            </LinkScroll> */}
+            <NavLink to="/products" className="px-4 py-2 mx-2 text-orange-500 animation-active "/>
             
             {/* <NavLink to="/aboutus" className="px-4 py-2 mx-2 text-black-500">
               About Us
@@ -112,10 +115,11 @@ const Header = () => {
               Charts
             </NavLink> */}
           </ul>
+          {!login&&<>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
-            <NavLink
-              to="/signin"
+          <NavLink
               className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"
+              to="/signin"
             >
               Sign In
             </NavLink>
@@ -127,7 +131,18 @@ const Header = () => {
             </NavLink>
             
           </div>
-        </nav>
+          {
+            !login&&<>
+            
+            <NavLink className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" to="/cart" >cart</NavLink>
+          
+            </>
+          }
+          </>
+      }
+   
+        
+          </nav>
       </header>
       
     </>
