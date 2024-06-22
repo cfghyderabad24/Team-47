@@ -10,7 +10,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
-
+import Statistics from "./components/Statistics";
 import Loader from "./components/Loader";
 import { baseurl } from "./setupEnv";
 import { useLoader } from "./context/LoaderContext";
@@ -42,7 +42,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
             </>
           )}
-
+          <Route path="/statistics" element={<Statistics />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
