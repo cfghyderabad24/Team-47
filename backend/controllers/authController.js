@@ -8,6 +8,7 @@ const asyncHandler=require("express-async-handler")
 const otpMailTemplate = require("../mailtemplates/otpMailTemplate");
 const otp=require("../models/otpSchema")
 const sendMail=require("../middleware/mailSender1")
+const welcomeMailTemplate=require("../mailtemplates/welcomeMailTemplate")
 const jwt=require("jsonwebtoken")
 
 
@@ -17,14 +18,13 @@ const login=asyncHandler(async(req,res,next)=>{
         const data=req.body;
         console.log(data)
         const user1=await user.findOne({email:data.email});
-        
         if(!user1){
             res.status(400).send({ok:false,msg:"user not found"})
         }else{
             const conclusion=await bcrypt.compare(data.password,user1.password)
             if(conclusion){
                 console.log(data.password,user1.password)
-                const token=await jwt.sign({name:data.name,email:data.email},process.env.secretkey,{expiresIn:"1h"})
+                const token=await jwt.sign({email:data.email},process.env.secretkey,{expiresIn:"1h"})
                 res.status(200).send({ok:true,token:token})
             }else{
                 res.status(400);
@@ -49,9 +49,10 @@ const signup=asyncHandler(async(req,res,next)=>{
             res.status(400).send({ok:false,msg:"user aldready exits"}) 
         }else{
             const hashedpassword=await bcrypt.hash(data.password,10)
-            const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword})
-            
-            await user2.save()
+            const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
+                city:data.city,phonenumber:data.phonenumber,admin:false,
+            })
+            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:welcomeMailTemplate({name:data.name})})            await user2.save()
             res.status(200).send({ok:true,msg:"sign up success"})
         }
         }catch(err){
