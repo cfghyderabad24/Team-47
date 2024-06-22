@@ -17,14 +17,12 @@ const userSchema=new mongoose.Schema({
     },city:{
         type:String,
         required: true
-    },contact:{
+    },phonenumber:{
         type:String,
         required:true
     },
     admin:{
         type:Boolean,
-
-    
     }
 }
 ,{timestamps:true});

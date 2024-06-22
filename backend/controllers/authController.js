@@ -8,7 +8,8 @@ const asyncHandler=require("express-async-handler")
 const otpMailTemplate = require("../mailtemplates/otpMailTemplate");
 const otp=require("../models/otpSchema")
 const sendMail=require("../middleware/mailSender1")
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 
 require("dotenv").config()
@@ -50,7 +51,7 @@ const signup=asyncHandler(async(req,res,next)=>{
         }else{
             const hashedpassword=await bcrypt.hash(data.password,10)
             const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
-                city:data.city,contact:data.contact,admin:data.admin
+                city:data.city,phonenumber:data.phonenumber,admin:data.admin
             })
             
             await user2.save()
