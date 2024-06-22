@@ -28,7 +28,7 @@ function App() {
       setLogin(false);
       // navigate("/")
     }
-  }, [loader]);
+  }, [loader]); 
 
   return (
     <GoogleOAuthProvider clientId="73387578779-c9ibjk7f0urhrsm8kqgks4633s7ovljb.apps.googleusercontent.com">
