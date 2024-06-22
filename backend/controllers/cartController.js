@@ -8,6 +8,7 @@ const updatecart=asyncHandler(async(req,res,next)=>{
     try{
         const cart=req.body.cart;
         const userdata=req.userdata;
+        console.log("updatecart called")
         const user1=await user.findOne({email:userdata.email})
         user1.cart=[...cart];
         console.log(await user1.save())
@@ -20,6 +21,7 @@ const updatecart=asyncHandler(async(req,res,next)=>{
 const getcart=asyncHandler(async(req,res,next)=>{
     try{
         const userdata=req.userdata;
+        console.log("getcart called")
         const user1=await user.findOne({email:userdata.email})
         res.status(200).send({ok:true,cart:user1.cart})
     }catch(err){
