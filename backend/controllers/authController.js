@@ -24,7 +24,7 @@ const login=asyncHandler(async(req,res,next)=>{
             const conclusion=await bcrypt.compare(data.password,user1.password)
             if(conclusion){
                 console.log(data.password,user1.password)
-                const token=await jwt.sign({name:data.name,email:data.email},process.env.secretkey,{expiresIn:"1h"})
+                const token=await jwt.sign({email:data.email},process.env.secretkey,{expiresIn:"1h"})
                 res.status(200).send({ok:true,token:token})
             }else{
                 res.status(400);
@@ -49,7 +49,9 @@ const signup=asyncHandler(async(req,res,next)=>{
             res.status(400).send({ok:false,msg:"user aldready exits"}) 
         }else{
             const hashedpassword=await bcrypt.hash(data.password,10)
-            const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword})
+            const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
+                city:data.city,contact:data.contact,admin:data.admin
+            })
             
             await user2.save()
             res.status(200).send({ok:true,msg:"sign up success"})
