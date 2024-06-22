@@ -51,7 +51,7 @@ const signup=asyncHandler(async(req,res,next)=>{
         }else{
             const hashedpassword=await bcrypt.hash(data.password,10)
             const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
-                city:data.city,phonenumber:data.phonenumber,admin:data.admin
+                city:data.city,phonenumber:data.phonenumber,admin:false,
             })
             
             await user2.save()
