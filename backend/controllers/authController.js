@@ -8,6 +8,7 @@ const asyncHandler=require("express-async-handler")
 const otpMailTemplate = require("../mailtemplates/otpMailTemplate");
 const otp=require("../models/otpSchema")
 const sendMail=require("../middleware/mailSender1")
+
 const jwt=require("jsonwebtoken")
 
 
@@ -52,7 +53,7 @@ const signup=asyncHandler(async(req,res,next)=>{
             const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
                 city:data.city,phonenumber:data.phonenumber,admin:false,
             })
-            
+            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:}).then((respo)=>{console.log(respo)}).catch((err)=>{console.log(err)})
             await user2.save()
             res.status(200).send({ok:true,msg:"sign up success"})
         }
