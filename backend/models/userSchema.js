@@ -20,6 +20,11 @@ const userSchema=new mongoose.Schema({
     },contact:{
         type:String,
         required:true
+    },
+    admin:{
+        type:Boolean,
+        required:true
+    
     }
 }
 ,{timestamps:true});
