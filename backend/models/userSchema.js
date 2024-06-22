@@ -24,7 +24,12 @@ const userSchema=new mongoose.Schema({
     admin:{
         type:Boolean,
         required:true
+    },
+    cart:{
+        type:Array,
+        default:[]
     }
+
 }
 ,{timestamps:true});
 const user=mongoose.model("user",userSchema)
