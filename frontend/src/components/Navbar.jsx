@@ -125,6 +125,7 @@ const Header = () => {
             >
               Sign Up
             </NavLink>
+            
           </div>
         </nav>
       </header>
