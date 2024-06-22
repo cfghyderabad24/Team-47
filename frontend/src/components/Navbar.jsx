@@ -21,10 +21,11 @@ const Header = () => {
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
           <div className="col-start-1 col-end-2 flex items-center">
             <NavLink to="/">
-              <img src="/Logo.svg" alt="logo" className="" />
+              <img src="https://www.nextskills360.in/wp-content/uploads/2020/09/cropped-Ns-logo-white-back.png" alt="logo" className="" />
             </NavLink>
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
+            
             <LinkScroll
               activeClass="active"
               to="about"
@@ -41,8 +42,9 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 a")
               }
             >
-              About
+              Home
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="feature"
@@ -59,8 +61,9 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Feature
+              About Us
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="pricing"
@@ -77,8 +80,9 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Pricing
+              Contact Us
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="testimoni"
@@ -95,8 +99,9 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Testimonial
+              Product
             </LinkScroll>
+            
             {/* <NavLink to="/aboutus" className="px-4 py-2 mx-2 text-black-500">
               About Us
             </NavLink>
@@ -224,6 +229,7 @@ const Header = () => {
               </svg>
               Pricing
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="testimoni"
@@ -254,7 +260,7 @@ const Header = () => {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 />
               </svg>
-              Testimonial
+              Product
             </LinkScroll>
           </ul>
         </div>
