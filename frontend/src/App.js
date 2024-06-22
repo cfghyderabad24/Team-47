@@ -10,6 +10,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
+import AiHelp from "./pages/AiHelp";
 
 import Loader from "./components/Loader";
 import { baseurl } from "./setupEnv";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/loader" element={<Loader />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/charts" element={<Charts />} />
+          <Route path="/chatbot" element={<AiHelp />} />
         </Routes>
         <Footer />
       </>
