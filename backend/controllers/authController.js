@@ -8,13 +8,8 @@ const asyncHandler=require("express-async-handler")
 const otpMailTemplate = require("../mailtemplates/otpMailTemplate");
 const otp=require("../models/otpSchema")
 const sendMail=require("../middleware/mailSender1")
-<<<<<<< HEAD
-const jwt=require("jsonwebtoken");
-const SendmailTransport = require("nodemailer/lib/sendmail-transport");
-=======
-
+const welcomeMailTemplate=require("../mailtemplates/welcomeMailTemplate")
 const jwt=require("jsonwebtoken")
->>>>>>> 0b6d1fb0f856bba29285ad1fa3cc3dd84833e052
 
 
 require("dotenv").config()
@@ -23,7 +18,6 @@ const login=asyncHandler(async(req,res,next)=>{
         const data=req.body;
         console.log(data)
         const user1=await user.findOne({email:data.email});
-        
         if(!user1){
             res.status(400).send({ok:false,msg:"user not found"})
         }else{
@@ -58,8 +52,7 @@ const signup=asyncHandler(async(req,res,next)=>{
             const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
                 city:data.city,phonenumber:data.phonenumber,admin:false,
             })
-            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:}).then((respo)=>{console.log(respo)}).catch((err)=>{console.log(err)})
-            await user2.save()
+            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:welcomeMailTemplate({name:data.name})})            await user2.save()
             res.status(200).send({ok:true,msg:"sign up success"})
         }
         }catch(err){

@@ -71,7 +71,7 @@ const welcomeMailTemplate = (data) => {
                     <h1>Welcome to Next Skills 360</h1>
                 </div>
                 <div class="content">
-                    <h2>Hello ${data.userName},</h2>
+                    <h2>Hello ${data.name},</h2>
                     <p>Thank you for creating an account with us! We're excited to have you on board.</p>
                     <p>Next Skills 360 is a multiple-award-winning Edtech social enterprise that makes innovative and low-cost products for the students of our country, providing coding learning for students who don't have computers through the kit provided by them.</p>
                     <p>We're here to help you make the most out of our service. Feel free to explore and let us know if you have any questions.</p>
