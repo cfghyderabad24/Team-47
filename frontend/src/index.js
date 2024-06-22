@@ -5,14 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {LoaderProvider} from "./context/LoaderContext"
 import {LoginProvider} from "./context/LoginContext"
+import { CartContextProvider } from './context/CartContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
   <Router>
   <LoginProvider>
     <LoaderProvider>
+    <CartContextProvider>
     <App />
+    </CartContextProvider>
     </LoaderProvider>
+
   
   </LoginProvider>
   </Router>

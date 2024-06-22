@@ -1,12 +1,13 @@
-const welcomeMailTemplate = (data) => {
+const productMailTemplate = (data) => {
     const { userName } = data;
+
     return (`
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to Next Skills 360</title>
+            <title>Thank You for Your Purchase</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -68,18 +69,18 @@ const welcomeMailTemplate = (data) => {
         <body>
             <div class="container">
                 <div class="header">
-                    <h1>Welcome to Next Skills 360</h1>
+                    <h1>Thank You for Your Purchase</h1>
                 </div>
                 <div class="content">
-                    <h2>Hello ${data.name},</h2>
-                    <p>Thank you for creating an account with us! We're excited to have you on board.</p>
-                    <p>Next Skills 360 is a multiple-award-winning Edtech social enterprise that makes innovative and low-cost products for the students of our country, providing coding learning for students who don't have computers through the kit provided by them.</p>
-                    <p>We're here to help you make the most out of our service. Feel free to explore and let us know if you have any questions.</p>
+                    <h2>Dear ${userName},</h2>
+                    <p>Thank you for purchasing our product from Next Skills 360. We truly appreciate your trust and support.</p>
+                    <p>We hope you find our product valuable and it helps you achieve your goals.</p>
+                    <p>If you have any questions or need further assistance, please feel free to contact us at <a href="mailto:support@nextskills360.com">support@nextskills360.com</a>.</p>
                     <p>Best Regards,<br>The Next Skills 360 Team</p>
                 </div>
                 <div class="footer">
-                    <p>&copy; 2024 Next Skills 360. All rights reserved.</p>
-                    <p>If you did not create this account, please contact us at <a href="mailto:support@nextskills360.com">support@nextskills360.com</a></p>
+                    <p>&copy; ${new Date().getFullYear()} Next Skills 360. All rights reserved.</p>
+                    <p>If you have not made this purchase, please contact us immediately at <a href="mailto:support@nextskills360.com">support@nextskills360.com</a>.</p>
                 </div>
             </div>
         </body>
@@ -87,4 +88,4 @@ const welcomeMailTemplate = (data) => {
     `);
 };
 
-module.exports = welcomeMailTemplate;
+module.exports = productMailTemplate;
