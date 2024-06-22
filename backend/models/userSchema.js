@@ -11,23 +11,21 @@ const userSchema=new mongoose.Schema({
     },password:{
         type:String,
         required:true
-    },solved:{
-        type:Array,
-        default:[]
-    },badges:{
-        type:Array,
-        default:[]
-    },
-    verified:{
-        type:Boolean,
-        default:false
-    
-    },
-    picture:{
+    },role:{
         type:String,
-        default:"https://www.gravatar.com/avatar/"
+        required:true
+    },city:{
+        type:String,
+        required: true
+    },phonenumber:{
+        type:String,
+        required:true
+    },
+    admin:{
+        type:Boolean,
+        required:true
     }
-    }
+}
 ,{timestamps:true});
 const user=mongoose.model("user",userSchema)
 module.exports=user
