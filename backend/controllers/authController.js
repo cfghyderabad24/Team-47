@@ -8,8 +8,13 @@ const asyncHandler=require("express-async-handler")
 const otpMailTemplate = require("../mailtemplates/otpMailTemplate");
 const otp=require("../models/otpSchema")
 const sendMail=require("../middleware/mailSender1")
+<<<<<<< HEAD
+const jwt=require("jsonwebtoken");
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
+=======
 
 const jwt=require("jsonwebtoken")
+>>>>>>> 0b6d1fb0f856bba29285ad1fa3cc3dd84833e052
 
 
 require("dotenv").config()
