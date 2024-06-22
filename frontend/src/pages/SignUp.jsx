@@ -11,7 +11,10 @@ const SignUp = () => {
   const {loader,loaderdispatcher}=useLoader()
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    city:'',
+    phonenumber:'',
+    email:'',
+    role:'',
     password: ''
   });
   const [otpform,setOtpform]=useState(false)
@@ -115,7 +118,8 @@ const SignUp = () => {
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-4">Sign up for an account</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
-          {!otpform&&<><div>
+          {!otpform&&<>
+          <div>
             <label htmlFor="name" className="sr-only">Name</label>
             <input
               id="name"
@@ -125,6 +129,32 @@ const SignUp = () => {
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Name"
               value={formData.name}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="city" className="sr-only">City</label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              required
+              className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="City"
+              value={formData.city}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="phonenumber" className="sr-only">Phone Number</label>
+            <input
+              id="phonenumber"
+              name="phonenumber"
+              type="text"
+              required
+              className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Phone Number"
+              value={formData.phonenumber}
               onChange={handleInputChange}
             />
           </div>
@@ -141,6 +171,27 @@ const SignUp = () => {
               value={formData.email}
               onChange={handleInputChange}
             />
+          </div>
+          <div>
+            <label htmlFor="role-select" className="sr-only">Select Role</label>
+            <select
+               id="role-select"
+               name="role"
+               required
+               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mt-2"
+               value={formData.role}
+              onChange={handleInputChange}
+            >
+            <option value="" disabled>Select a role</option>
+            <option value="principle">Principle</option>
+            <option value="csrrepresentative">CSR Representative</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="parent">Parent</option>
+            <option value="academicdirector">Academic Director</option>
+            <option value="ngo">NGO</option>
+            <option value="other">Other</option>
+             </select>
           </div>
           <div>
             <label htmlFor="password" className="sr-only">Password</label>
