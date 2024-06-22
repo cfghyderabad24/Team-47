@@ -52,7 +52,8 @@ const signup=asyncHandler(async(req,res,next)=>{
             const user2=new user({name:data.name,verified:true,email:data.email,password:hashedpassword, role: data.role, 
                 city:data.city,phonenumber:data.phonenumber,admin:false,
             })
-            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:welcomeMailTemplate({name:data.name})})            await user2.save()
+            sendMail({from:"svnmurali1@gmail.com",to:data.email,subject:"signup success",text:"signup success",html:welcomeMailTemplate({name:data.name})})        
+                await user2.save()
             res.status(200).send({ok:true,msg:"sign up success"})
         }
         }catch(err){
@@ -139,4 +140,7 @@ const otpverify=asyncHandler(async(req,res,next)=>{
         next(err)
     }
 })
+
 module.exports={login,signup,googleauth,getotp,otpverify}
+
+
