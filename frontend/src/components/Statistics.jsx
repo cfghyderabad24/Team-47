@@ -4,30 +4,32 @@ import { Grid, Box, Typography } from '@mui/material';
 
 export const sampleData = [
     { name: 'Jan', customers: 30, revenue: 2400 },
-    { name: 'Feb', customers: 45, revenue: 3200 },
-    { name: 'Mar', customers: 50, revenue: 2800 },
-    { name: 'Apr', customers: 60, revenue: 3900 },
-    { name: 'May', customers: 70, revenue: 4300 },
-    { name: 'Jun', customers: 80, revenue: 4500 },
-    { name: 'Jul', customers: 90, revenue: 4800 },
-    { name: 'Aug', customers: 100, revenue: 5200 },
-    { name: 'Sep', customers: 110, revenue: 5400 },
-    { name: 'Oct', customers: 120, revenue: 5800 },
-    { name: 'Nov', customers: 130, revenue: 6000 },
-    { name: 'Dec', customers: 140, revenue: 6500 },
+    { name: 'Feb', customers: 120, revenue: 5800 },
+    { name: 'Mar', customers: 45, revenue: 3200 },
+    { name: 'Apr', customers: 50, revenue: 2800 },
+    { name: 'May', customers: 100, revenue: 5200 },
+    { name: 'Jun', customers: 70, revenue: 4300 },
+    { name: 'Jul', customers: 80, revenue: 4500 },
+    { name: 'Aug', customers: 90, revenue: 4800 },
+    { name: 'Sep', customers: 140, revenue: 6500 },
+    { name: 'Oct', customers: 110, revenue: 5400 },
+    { name: 'Nov', customers: 60, revenue: 3900 },
+    { name: 'Dec', customers: 130, revenue: 6000 } 
   ];
   
 const sampleImpactData = [
   { name: 'Jan', studentsReached: 200, workshops: 5, visuallyImpairedStudents: 10 },
-  { name: 'Feb', studentsReached: 300, workshops: 7, visuallyImpairedStudents: 15 },
+  
   { name: 'Mar', studentsReached: 400, workshops: 8, visuallyImpairedStudents: 20 },
-  { name: 'Apr', studentsReached: 500, workshops: 10, visuallyImpairedStudents: 25 },
+  
   { name: 'May', studentsReached: 600, workshops: 12, visuallyImpairedStudents: 30 },
   { name: 'Jun', studentsReached: 700, workshops: 14, visuallyImpairedStudents: 35 },
+  { name: 'Feb', studentsReached: 300, workshops: 7, visuallyImpairedStudents: 15 },
   { name: 'Jul', studentsReached: 800, workshops: 16, visuallyImpairedStudents: 40 },
   { name: 'Aug', studentsReached: 900, workshops: 18, visuallyImpairedStudents: 45 },
   { name: 'Sep', studentsReached: 1000, workshops: 20, visuallyImpairedStudents: 50 },
   { name: 'Oct', studentsReached: 1100, workshops: 22, visuallyImpairedStudents: 55 },
+  { name: 'Apr', studentsReached: 500, workshops: 10, visuallyImpairedStudents: 25 },
   { name: 'Nov', studentsReached: 1200, workshops: 24, visuallyImpairedStudents: 60 },
   { name: 'Dec', studentsReached: 1300, workshops: 26, visuallyImpairedStudents: 65 },
 ];
