@@ -34,7 +34,7 @@ import Pie from "./pages/pie";
 import Line from "./pages/line";
 import FAQ from "./pages/faq";
 // import Calendar from "./pages/calendar";
-import Geography from "./pages/geography";
+import Map from "./components/Locator";
 
 
 function App() {
@@ -82,7 +82,7 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
               {/* <Route path="/calendar" element={<Calendar />} /> */}
-              <Route path="/geography" element={<Geography />} />
+              <Route path="/map" element={<Map />} />
 
           </Routes>
         </PageWrapper>

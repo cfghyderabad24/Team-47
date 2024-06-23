@@ -24,7 +24,8 @@ const Dashboard = () => {
   return (
     <Box m="20px">
       {/* HEADER */}
-    <ThemeProvider theme={theme}>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="app">
         <Sidebar/>
@@ -33,25 +34,6 @@ const Dashboard = () => {
         </main>
       </div>
     </ThemeProvider>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
-        <Box>
-          <Button
-            sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
-        </Box>
-      </Box>
-
       {/* GRID & CHARTS */}
       <Box
         display="grid"
@@ -59,10 +41,12 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
+        {/* <Header title="DASHBOARD" subtitle="Welcome to your dashboard" /> */}
+
         {/* ROW 1 */}
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -81,7 +65,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -100,7 +84,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -119,7 +103,7 @@ const Dashboard = () => {
         </Box>
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -141,7 +125,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 8"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
         >
           <Box
             mt="25px"
@@ -163,7 +147,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                $59,342.32
+                Rs 59,342.32
               </Typography>
             </Box>
             <Box>
@@ -181,7 +165,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           overflow="auto"
         >
           <Box
@@ -219,7 +203,7 @@ const Dashboard = () => {
               </Box>
               <Box color={colors.grey[100]}>{transaction.date}</Box>
               <Box
-                backgroundColor={colors.greenAccent[500]}
+                backgroundColor="#ffffff"
                 p="5px 10px"
                 borderRadius="4px"
               >
@@ -233,7 +217,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
@@ -251,7 +235,7 @@ const Dashboard = () => {
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $48,352 revenue generated
+              Rs 48,352 revenue generated
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box>
@@ -259,7 +243,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
         >
           <Typography
             variant="h5"
@@ -275,7 +259,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="#ffffff"
           padding="30px"
         >
           <Typography
@@ -290,6 +274,7 @@ const Dashboard = () => {
           </Box>
         </Box>
       </Box>
+    </Box>
     </Box>
   );
 };

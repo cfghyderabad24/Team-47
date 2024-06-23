@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import getScrollAnimation from "../../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "../ScrollAnimationWrapper";
+import Chatbot from "../chatbot";
 
 const Home = ({
   listUser = [
@@ -89,6 +90,7 @@ const Home = ({
           style={{ filter: "blur(114px)" }}
         ></div>
       </div>
+      <Chatbot />
     </div>
   );
 };
