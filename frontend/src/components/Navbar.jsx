@@ -130,16 +130,19 @@ const Header = () => {
               Sign Up
             </NavLink>
           </div>
-          {
-            !login&&<>
+          
+          </>
+      }
+      <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
+            {login&&<>
             
             <NavLink className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" to="/cart" >cart</NavLink>
           
             </>
+          
           }
-          </>
-      }
-   
+          </div>
+    
         
           </nav>
       </header>

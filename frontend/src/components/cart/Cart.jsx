@@ -1,12 +1,44 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useCart } from '../../context/CartContext';
 import { Box, Typography, Grid, Card, CardContent, CardMedia, IconButton, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-
+import axios from 'axios';
+import { baseurl } from '../../setupEnv';
+import {useLoader} from '../../context/LoaderContext'
+import {useLogin} from '../../context/LoginContext'
+import AuthService from '../../AuthService';
 function Cart() {
-  const { cartItems, removeItemFromCart, decreaseQuantity, increaseQuantity } = useCart();
+  const { cartItems, removeItemFromCart, decreaseQuantity, increaseQuantity ,setCartItems} = useCart();
+  const {loaderdispatcher}=useLoader()
+  const {login}=useLogin()
+
+  useEffect(()=>{
+    const run =async()=>{
+    try{
+      loaderdispatcher({type:"FETCH_STARTED",payload:"fetching started"})
+      const respo =await axios.post(`${baseurl}/api/cart/getcart`,{cart:cartItems},{headers:{token:AuthService.gettoken()}})
+      loaderdispatcher({type:"FETCH_SUCCESS",payload:"fetching completed"})
+      setCartItems(respo.data.cart)
+    }catch(err){
+      console.log(err)
+      loaderdispatcher({type:"FETCH_ERROR",payload:"fetching error"})
+    }
+  }
+    run();
+  },[login])
+
+  useEffect(()=>{
+    const run =async()=>{
+    try{
+      const respo=await axios.post('http://localhost:5000/api/cart/updatecart',{cart:cartItems},{headers:{token:AuthService.gettoken()}})
+    }catch(err){
+      console.log(err)
+    }
+  }
+  run();
+  },[cartItems])
 
   const handleRemoveItem = (itemId) => {
     removeItemFromCart(itemId);
