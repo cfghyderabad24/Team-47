@@ -15,11 +15,10 @@ const chatbot = asyncHandler(async (req, res) => {
 
         // Initial training data (example conversations)
         const initialTrainingData = [
-            { role: "user", parts: [{ text: "you are tutor at vidya verse." }] },
-            { role: "model", parts: [{ text: "ok ill be glad to be a tutor at vidyaverse" }] },
-            { role: "user", parts: [{ text: "when i ask who are you you should say i am tutor at vidya verse" }] }
+            { role: "user", parts: [{ text: "you are next360 ai helper." }] },
+            { role: "model", parts: [{ text: "ok ill be glad to be a ai help bot at next360" }] },
+            { role: "user", parts: [{ text: "when i ask who are you you should say i am ai help bot for next360" }] }
         ];
-
         // Product information
         const productInfo = [
             {

@@ -24,6 +24,9 @@ import ProductCard from "./components/productCard/ProductCard";
 import ProductDetails from "./components/productDeatils/ProductDetails";
 import PageWrapper from "./components/PageWrapper"; // Import the wrapper component
 import Cart from "./components/cart/Cart";
+import OrderTracking from "./components/orderTracking/OrderTracking";
+import AiHelp from "./pages/AiHelp.jsx";
+
 
 function App() {
   const { login, setLogin } = useLogin();
@@ -60,6 +63,9 @@ function App() {
             <Route path="/productCard" element={<ProductCard />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/chat" element={<AiHelp/>} />
+            <Route path="/orderTracking/:orderId" element={<OrderTracking />} />
+        
 
 
           </Routes>

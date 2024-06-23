@@ -1,18 +1,24 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
+
 import { useCart } from '../../context/CartContext';
-import { Box, Typography, Grid, Card, CardContent, CardMedia, IconButton, Button } from '@mui/material';
+import { Box, Typography, Grid, Card, CardContent, CardMedia, IconButton, Button, Modal, Backdrop, Fade } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { baseurl } from '../../setupEnv';
 import {useLoader} from '../../context/LoaderContext'
 import {useLogin} from '../../context/LoginContext'
 import AuthService from '../../AuthService';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 function Cart() {
   const { cartItems, removeItemFromCart, decreaseQuantity, increaseQuantity ,setCartItems} = useCart();
   const {loaderdispatcher}=useLoader()
   const {login}=useLogin()
+  const [open, setOpen] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const run =async()=>{
@@ -50,6 +56,36 @@ function Cart() {
 
   const handleIncreaseQuantity = (itemId) => {
     increaseQuantity(itemId);
+  };
+
+  const generateOrderID = () => {
+    return Math.random().toString(36).substr(2, 9);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handlePayment = () => {
+    const newOrderID = generateOrderID();
+    const orderDetails = {
+      id: newOrderID,
+      status: 'Processing',
+      items: cartItems.map(item => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        image: item.image
+      }))
+    };
+    setOrderData(orderDetails);
+    setOpen(false);
+    navigate(`/orderTracking/${newOrderID}`); // Navigate to order tracking page with new order ID
   };
 
   return (
@@ -94,10 +130,62 @@ function Cart() {
         ))}
       </Grid>
       <Box mt={3} textAlign="center">
-        <Button variant="contained" color="secondary" onClick={() => alert('Redirect to payment page or book now')}>
+        <Button variant="contained" color="secondary" onClick={handleOpen}>
           Book Now
         </Button>
       </Box>
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+          }}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+              Dummy Payment Gateway
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+              This is a dummy payment gateway. Implement your actual payment processing here.
+            </Typography>
+            <Box mt={3} textAlign="center">
+              <Button variant="contained" color="primary" onClick={handlePayment}>
+                Pay Now
+              </Button>
+            </Box>
+          </Box>
+        </Fade>
+      </Modal>
+
+      {orderData && (
+        <Box mt={3} textAlign="center">
+          <Typography variant="h5" gutterBottom>
+            Order ID: {orderData.id}
+          </Typography>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <CheckCircleIcon color="primary" />
+            <Typography variant="h6" gutterBottom>
+              Payment Successful
+            </Typography>
+          </Box>
+        </Box>
+      )}
     </div>
   );
 }

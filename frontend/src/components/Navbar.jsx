@@ -115,7 +115,7 @@ const Header = () => {
               Charts
             </NavLink> */}
           </ul>
-          {!login&&<>
+          {!login && <>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
           <NavLink
               className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"
@@ -129,6 +129,7 @@ const Header = () => {
             >
               Sign Up
             </NavLink>
+            
           </div>
           
           </>
@@ -137,6 +138,13 @@ const Header = () => {
             {login&&<>
             
             <NavLink className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" to="/cart" >cart</NavLink>
+          
+            </>
+          
+          }
+          {login&&<>
+            
+            <NavLink className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" to="/chat" >chat</NavLink>
           
             </>
           
