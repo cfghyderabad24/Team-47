@@ -26,7 +26,7 @@ const OrderTracking = () => {
           tracking: [
             { status: 'Processing', description: 'Order placed', timestamp: '2024-06-24T12:00:00Z' },
             { status: 'Processing', description: 'Packing', timestamp: '2024-06-24T13:00:00Z' },
-            { status: 'Dispatched', description: 'Shipped', timestamp: '2024-06-24T14:00:00Z' },
+            { status: 'Dispatched', description: 'Dispatched', timestamp: '2024-06-24T14:00:00Z' },
             { status: 'Delivered', description: 'Delivered', timestamp: '2024-06-25T10:00:00Z' }
           ]
         };
@@ -52,7 +52,7 @@ const OrderTracking = () => {
           return prevIndex;
         }
       });
-    }, 2000); // Adjust the interval time (in milliseconds) as needed
+    }, 3000); // Adjust the interval time (in milliseconds) as needed
 
     return () => clearInterval(interval);
   }, [order]);
@@ -123,17 +123,23 @@ const OrderTracking = () => {
           <Typography variant="h5" gutterBottom>
             Tracking Information
           </Typography>
-          <Box mb={2}>
-            <Box display="flex" alignItems="center">
-              {getStatusIcon(order.tracking[currentStepIndex].status)}
-              <Typography variant="body1" color="textSecondary" sx={{ ml: 1 }}>
-                {order.tracking[currentStepIndex].description}
-              </Typography>
+          {order.tracking.map((step, index) => (
+            <Box key={index} mb={2}>
+              {index <= currentStepIndex && (
+                <Card sx={{ maxWidth: 400, margin: 'auto', mb: 2, p: 2 }}>
+                  <Box display="flex" alignItems="center" mb={2}>
+                    {getStatusIcon(step.status)}
+                    <Typography variant="body1" color="textSecondary" sx={{ ml: 1 }}>
+                      {step.description}
+                    </Typography>
+                  </Box>
+                  <Typography variant="caption" color="textSecondary">
+                    {new Date(step.timestamp).toLocaleString()}
+                  </Typography>
+                </Card>
+              )}
             </Box>
-            <Typography variant="caption" color="textSecondary">
-              {new Date(order.tracking[currentStepIndex].timestamp).toLocaleString()}
-            </Typography>
-          </Box>
+          ))}
         </Box>
       </Paper>
     </Box>
