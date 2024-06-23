@@ -36,7 +36,7 @@ const SignIn = () => {
     console.log(respo.data)
     AuthService.setToken(respo.data.token)
     setLogin(true)
-    navigate('/home')
+    navigate('/products')
     console.log(formData);
     }catch(err){
       loaderdispatcher({type:"FETCH_ERROR",payload:"fetching error"})

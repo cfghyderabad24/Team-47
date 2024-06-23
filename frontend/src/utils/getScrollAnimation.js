@@ -1,8 +1,8 @@
 export default function getScrollAnimation() {
 	return ({
     offscreen: {
-      y: 150,
-      opacity: 0,
+      y: 100,
+      opacity: 10,
     },
     onscreen: ({duration = 2} = {}) =>  ({
       y: 0,

@@ -24,18 +24,18 @@ import ProductCard from "./components/productCard/ProductCard";
 import ProductDetails from "./components/productDeatils/ProductDetails";
 import PageWrapper from "./components/PageWrapper"; // Import the wrapper component
 import Cart from "./components/cart/Cart";
+import OrderTracking from "./components/orderTracking/OrderTracking";
+import AiHelp from "./pages/AiHelp.jsx";
 import Dashboard from "./pages/dashboard";
 import Team from "./pages/team";
-import Contacts from "./pages/contacts";
 import Invoices from "./pages/invoices";
-import Form from "./pages/form";
+import Contacts from "./pages/contacts";
 import Bar from "./pages/bar";
-import Pie from "./pages/pie";
+import Form from "./pages/form";
 import Line from "./pages/line";
+import Pie from "./pages/pie";
 import FAQ from "./pages/faq";
-// import Calendar from "./pages/calendar";
-import Map from "./components/Locator";
-
+import Locator from "./components/Locator.jsx";
 
 function App() {
   const { login, setLogin } = useLogin();
@@ -46,7 +46,7 @@ function App() {
       setLogin(false);
       // navigate("/")
     }
-  }, [loader]);
+  }, [loader]); 
 
   return (
     <GoogleOAuthProvider clientId="73387578779-c9ibjk7f0urhrsm8kqgks4633s7ovljb.apps.googleusercontent.com">
@@ -82,7 +82,11 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
               {/* <Route path="/calendar" element={<Calendar />} /> */}
-              <Route path="/map" element={<Map />} />
+              <Route path="/locator" element={<Locator />} />
+            <Route path="/chat" element={<AiHelp/>} />
+            <Route path="/orderTracking/:orderId" element={<OrderTracking />} />
+        
+
 
           </Routes>
         </PageWrapper>

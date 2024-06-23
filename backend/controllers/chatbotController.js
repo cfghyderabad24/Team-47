@@ -15,11 +15,18 @@ const chatbot = asyncHandler(async (req, res) => {
 
         // Initial training data (example conversations)
         const initialTrainingData = [
+<<<<<<< HEAD
             { role: "user", parts: [{ text: "you are tutor at vidya verse." }] },
             { role: "model", parts: [{ text: "ok ill be glad to be a tutor at vidyaverse" }] },
             { role: "user", parts: [{ text: "when i ask who are you you should say i am tutor at vidya verse" }] }
         ];
 
+=======
+            { role: "user", parts: [{ text: "you are next360 ai helper." }] },
+            { role: "model", parts: [{ text: "ok ill be glad to be a ai help bot at next360" }] },
+            { role: "user", parts: [{ text: "when i ask who are you you should say i am ai help bot for next360" }] }
+        ];
+>>>>>>> abafe8b3551b36a307ea4b44aa3e5c96fe618a47
         // Product information
         const productInfo = [
             {
@@ -120,9 +127,15 @@ const chatbot = asyncHandler(async (req, res) => {
         ];
 
         // Convert product information to a text format suitable for chat context
+<<<<<<< HEAD
         const productContext = productInfo.map(product => {
             ProductName:`${product.name}\nDescription: ${product.description}\nPrice: ${product.price}\nManufacturer: ${product.manufacturer}\nFeatures: ${product.features.join(', ')}\n`
     }).join("\n");
+=======
+        const productContext = productInfo.map(product => 
+            `Product Name: ${product.name}\nDescription: ${product.description}\nPrice: ${product.price}\nManufacturer: ${product.manufacturer}\nFeatures: ${product.features.join(', ')}\n`
+        ).join("\n");
+>>>>>>> abafe8b3551b36a307ea4b44aa3e5c96fe618a47
 
         // Merge initial training data with the history from the request
         const extendedHistory = initialTrainingData.concat(history);
@@ -145,4 +158,8 @@ const chatbot = asyncHandler(async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 module.exports = chatbot;
+=======
+module.exports = chatbot;
+>>>>>>> abafe8b3551b36a307ea4b44aa3e5c96fe618a47
