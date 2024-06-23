@@ -8,7 +8,6 @@ const AuthService={
         try{
         const token=JSON.parse(sessionStorage.getItem('token'))
         if(token){
-            
             const decoded=jwtDecode(token)
             if(decoded.exp<Date.now()/1000){
                 return true

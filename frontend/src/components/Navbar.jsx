@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate} from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import {useLogin} from '../context/LoginContext'
+import AuthService from "../AuthService.jsx";
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
   const {login,setLogin}= useLogin()
+  const navigate=useNavigate()
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollActive(window.scrollY > 20);
@@ -27,7 +29,7 @@ const Header = () => {
             </NavLink>
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
-            
+          {!login && <>
             <LinkScroll
               activeClass="active"
               to="about"
@@ -84,36 +86,13 @@ const Header = () => {
             >
               Contact Us
             </LinkScroll>
+            </>
+          }
 
-            {/* <LinkScroll
-              activeClass="active"
-              to="/testimoni"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("testimoni");
-              }}
-              className={
-                "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
-                (activeLink === "testimoni"
-                  ? " text-orange-500 animation-active "
-                  : " text-black-500 hover:text-orange-500 ")
-              }
-            >
-              Product
-            </LinkScroll> */}
-            <NavLink to="/products" className="px-4 py-2 mx-2 text-orange-500 animation-active "/>
             
-            {/* <NavLink to="/aboutus" className="px-4 py-2 mx-2 text-black-500">
-              About Us
-            </NavLink>
-            <NavLink to="/contactus" className="px-4 py-2 mx-2 text-black-500">
-              Contact Us
-            </NavLink>
-            <NavLink to="/charts" className="px-4 py-2 mx-2 text-black-500">
-              Charts
-            </NavLink> */}
+            <NavLink to="/products" className="px-4 py-2 mx-2 text-orange-500 animation-active ">products</NavLink>
+
+       
           </ul>
           {!login && <>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
@@ -143,8 +122,18 @@ const Header = () => {
           
           }
           {login&&<>
+
+            <NavLink to="/tracking" className="font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white">tracking</NavLink>
             
             <NavLink className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" to="/chat" >chat</NavLink>
+          
+           
+            <button className="className=font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-orange-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-orange-500 hover:text-white-500 transition-all hover:shadow-orange hover:text-white" onClick={()=>{AuthService.logout();
+                setLogin(false)
+                navigate("/")
+            }
+              
+          } >signout</button>
           
             </>
           

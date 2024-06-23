@@ -4,7 +4,9 @@ import { Box, Typography, Grid, Card, CardContent, CardMedia, Paper } from '@mui
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
+import axios from 'axios'
+import image1 from '../../assets/image1.png';
+import image2 from "../../assets/image2.png"
 const OrderTracking = () => {
   const { orderId } = useParams();
   const [order, setOrder] = useState(null);
@@ -15,13 +17,12 @@ const OrderTracking = () => {
     const fetchOrderData = async () => {
       try {
         await new Promise(resolve => setTimeout(resolve, 1000)); // Simulating delay
-
         const exampleOrder = {
           id: orderId,
           status: 'Processing',
-          items: [
-            { id: '1', name: 'Product A', quantity: 2, price: 50.00, image: 'https://example.com/productA.jpg' },
-            { id: '2', name: 'Product B', quantity: 1, price: 30.00, image: 'https://example.com/productB.jpg' }
+          items:[
+            { id: '1', name: 'Product A', quantity: 2, price: 50.00, image: image1 },
+            { id: '2', name: 'Product B', quantity: 1, price: 30.00, image: image2 }
           ],
           tracking: [
             { status: 'Processing', description: 'Order placed', timestamp: '2024-06-24T12:00:00Z' },

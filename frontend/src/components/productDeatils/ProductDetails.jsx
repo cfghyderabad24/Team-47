@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import {useLogin} from "../../context/LoginContext.jsx"
 import image1 from '../../assets/image1.png';
 import image2 from '../../assets/image2.png';
 import image3 from '../../assets/image3.png';
@@ -125,6 +126,8 @@ function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addItemToCart } = useCart(); // Access addItemToCart function from CartContext
+  
+  const {login} =useLogin()
 
   // Find the selected product based on id parameter
   const product = sampleProducts.find((product) => product.id === parseInt(id));
@@ -142,6 +145,11 @@ function ProductDetails() {
   };
 
   const handleAddToCart = () => {
+    if(!login){
+      alert("login to continue")
+      navigate("/signin")
+      return
+    }
     setOpenDialog(true);
   };
 
@@ -154,6 +162,7 @@ function ProductDetails() {
       quantity,
       totalPrice,
     };
+    
     addItemToCart(cartItem); // Add selected product to cart
     navigate('/cart'); // Navigate to cart page
   };

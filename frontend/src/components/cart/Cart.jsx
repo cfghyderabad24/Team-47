@@ -12,6 +12,7 @@ import {useLoader} from '../../context/LoaderContext'
 import {useLogin} from '../../context/LoginContext'
 import AuthService from '../../AuthService';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 function Cart() {
   const { cartItems, removeItemFromCart, decreaseQuantity, increaseQuantity ,setCartItems} = useCart();
   const {loaderdispatcher}=useLoader()
@@ -70,7 +71,14 @@ function Cart() {
     setOpen(false);
   };
 
-  const handlePayment = () => {
+  const handlePayment = async() => {
+
+    try{
+
+      console.log("hello1")
+    const respo=await axios.post("http://localhost:5000/api/cart/updatecart",{cart:[]},{headers:{token:AuthService.gettoken()}})
+    console.log(respo)
+    console.log("hello2")
     const newOrderID = generateOrderID();
     const orderDetails = {
       id: newOrderID,
@@ -83,9 +91,14 @@ function Cart() {
         image: item.image
       }))
     };
+    const respo2=await axios.post("http://localhost:5000/api/cart/createorder",{orderdetails:orderDetails},{headers:{token:AuthService.gettoken()}})
     setOrderData(orderDetails);
+    setCartItems([])
     setOpen(false);
     navigate(`/orderTracking/${newOrderID}`); // Navigate to order tracking page with new order ID
+  }catch(err){
+    console.log(err)
+  }
   };
 
   return (
@@ -159,10 +172,10 @@ function Cart() {
             p: 4,
           }}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Dummy Payment Gateway
+              Payment Gateway
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              This is a dummy payment gateway. Implement your actual payment processing here.
+              Payment gateway.
             </Typography>
             <Box mt={3} textAlign="center">
               <Button variant="contained" color="primary" onClick={handlePayment}>
@@ -181,7 +194,6 @@ function Cart() {
           <Box display="flex" alignItems="center" justifyContent="center">
             <CheckCircleIcon color="primary" />
             <Typography variant="h6" gutterBottom>
-              Payment Successful
             </Typography>
           </Box>
         </Box>
